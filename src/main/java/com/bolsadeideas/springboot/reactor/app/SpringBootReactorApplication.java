@@ -24,12 +24,13 @@ public class SpringBootReactorApplication implements CommandLineRunner   {
 	public void run(String... args) throws Exception {
 	
 		Flux <Usuario> nombres = Flux.just("carlo delgado", "allison j salas","martha marallano", "joffre hermosilla", "mila salas","bruce lee","bruce willis")
-				.map(nombre ->  new Usuario (nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase()))//*split separa los nombres y los apellidos
-				.filter(usuario ->usuario.getNombre().toLowerCase().equals("bruce"))
+           .map(nombre ->  new Usuario (nombre.split(" ")[0].toUpperCase(), nombre.split(" ")[1].toUpperCase())) //*split separa los nombres y los apellidos
+				.filter(usuario ->usuario.getNombre().equalsIgnoreCase("bruce"))
 				
 				
 				//*segun el orden de posicion  toUpperCase mayusculas se vera en consola 
 		        	  
+		
 				
 			.doOnNext(usuario -> {
 				if(usuario == null) {
